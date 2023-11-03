@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Marks</title>
+    <link rel="stylesheet" href="add_marks.css">
+    <style>
+        /* Add any additional styles you need */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h2>Add Marks</h2>
+        </div>
+        <form action="add_marks.php" method="POST">
+            <input type="text" name="student_id" placeholder="Student ID" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <input type="text" name="score" placeholder="Marks" required>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

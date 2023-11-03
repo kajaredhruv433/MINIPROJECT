@@ -1,0 +1,27 @@
+<?php
+session_start();
+include('db_connection.php');
+
+if (!isset($_SESSION['user_id'])) {
+    header('Location: login.html'); // Redirect to login if not logged in
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+// Retrieve data specific to the logged-in user
+$query = "SELECT * FROM performance_data WHERE user_id='$user_id'";
+$result = $conn->query($query);
+
+// Process the data and display
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        // Process and display performance data
+        echo "Subject: " . $row["subject"]. " - Score: " . $row["score"]. "<br>";
+    }
+} else {
+    echo "No performance data available.";
+}
+
+$conn->close();
+?>

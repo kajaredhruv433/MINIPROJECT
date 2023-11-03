@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> mini project </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="performance.css">
+    <title>Creative Navigation Bar</title>
+    <style>
+        /* Your existing styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .navbar {
+            background-color: #281e5d;
+            overflow: hidden;
+        }
+
+        .navbar a {
+            float: left;
+            font-size: 16px;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .navbar a:hover {
+            background-color: #fff;
+            color: #ddd;
+        }
+
+       
+
+       
+
+        #performance-graph {
+            text-align: center;
+            max-height: 110vh;
+            margin-top: 10px;
+        }
+
+        .performance-container {
+            margin: 0 auto; /* Center the container */
+            max-width: 800px; /* Set the maximum width for the graph */
+        }
+
+       
+    </style>
+</head>
+
+<body bgcolor=#ffffff>
+    <div class="navbar">
+        <a> 
+            <h1 align="center"><b> Performance Dashboard </b></h1>
+        </a>
+        <HR>
+        <dl>
+            <a href= "homepage.php"> Home </a>
+            <a href="academics.php">Academic Status</a>
+          
+            <a href="http://erp.vcet.edu.in/login.htm;jsessionid=6C48A25405B3742ED71FC103134703DD">ERP portal</a>
+            
+            <br>
+            <br>
+            <br>
+            <HR>
+        </div>
+        
+        
+
+        <div id="performance-graph" class="performance-container">
+            <canvas id="performance-chart" width="800" height="500"></canvas>
+        </div>
+
+              
+
+               <!-- Add an ID to the canvas for easy selection in JavaScript -->
+               
+
+<!-- Add a script to fetch data from the PHP backend -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('get_performance_data.php')
+            .then(response => response.json())
+            .then(data => {
+                var ctx = document.getElementById('performance-chart').getContext('2d');
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: 'Performance',
+                            data: data.values,
+                            backgroundColor: 'rgba(0, 0, 255, 0.5)',
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            borderWidth: 1.5
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            y: {
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+    });
+</script>
+
+
+            </body>
+            </html>

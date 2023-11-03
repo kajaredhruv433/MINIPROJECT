@@ -1,0 +1,156 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mini Project</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js">
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('C:\Users\dhruv\OneDrive\Pictures\wallpaper\Dark theme\wp7576888.webp');
+    background-size: cover;
+    background-attachment: fixed;
+  }
+  .navbar {
+    background-color: #69018cf6;
+    overflow: hidden;
+  }
+  .navbar a {
+    float: left;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+  }
+  .navbar a:hover {
+    background-color: #c9b4ce;
+    color: #ffffff;
+  }
+  .bar {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  background-color: rgba(249, 249, 249, 0.5); /* Use rgba for transparency */
+  border-radius: 20px;
+  position: relative;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+  .section {
+    width: 33.33%;
+    text-align: left; /* Changed text alignment to left */
+  }
+  .subject-name {
+    font-weight: bold;
+    text-align: left;
+    margin-bottom: 5px;
+  }
+  .link {
+  font-size: 12px;
+  color: black; /* Set link color to black */
+  text-decoration: none; /* Remove underline */
+  display: block;
+}
+
+  .stats {
+    font-size: 18px;
+    margin: 10px 0;
+  }
+  .chart-container {
+    position: relative;
+    width: 100%;
+  }
+  .chart-container canvas {
+    border: 2px solid #a4393900;
+    border-radius: 50%;
+  }
+</style>
+</head>
+
+<body>
+<div class="navbar">
+  <a href="https://www.youtube.com/"><h1 align="center"><b>Academics</b></h1></a>
+  <hr>
+  <a href="E:\\personal\\MINI PROJECT\\homepage.html">Home</a>
+  <a href="https://www.hackerrank.com/get-started/">Courses</a>
+  <a href="E:\\personal\\MINI PROJECT\\progress.html">Progress</a>
+  <a href="E:\\personal\\MINI PROJECT\\portfolio.html">Portfolio</a>
+  <a href="E:\\personal\\MINI PROJECT\\attendance.html">Attendance</a>
+  <br><br><br>
+  <hr>
+</div>
+
+<div class="bar">
+  <div class="section">
+    <div class="subject-name">Subject 1</div>
+    <a class="link" href="#section1ref">Reference Material</a>
+  </div>
+  <div class="section">
+    <div class="stats">Highest Score: 90%</div>
+    <div class="stats">Average Score: 70%</div>
+    <div class="stats">Progress: 80%</div>
+  </div>
+  <div class="section">
+    <div class="chart-container">
+      <canvas class="chart"></canvas>
+    </div>
+  </div>
+</div>
+
+<!-- Add more bars as needed -->
+
+<!-- Include Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var ctx = document.querySelector('.chart').getContext('2d');
+    var data = {
+      datasets: [
+        {
+          data: [90, 10],
+          backgroundColor: ['#007bff', 'transparent'],
+          borderColor: '#fff',
+          borderWidth: 2,
+        },
+        {
+          data: [70, 30],
+          backgroundColor: ['#28a745', 'transparent'],
+          borderColor: '#fff',
+          borderWidth: 2,
+        },
+        {
+          data: [80, 20],
+          backgroundColor: ['#ffc107', 'transparent'],
+          borderColor: '#fff',
+          borderWidth: 2,
+        }
+      ]
+    };
+    var options = {
+      cutoutPercentage: 70,
+      tooltips: {
+        enabled: false
+      },
+      responsive: true,
+      maintainAspectRatio: false,
+    };
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: data,
+      options: options
+    });
+  });
+</script>
+
+</body>
+</html>
